@@ -1,0 +1,39 @@
+/* Q1_CSS */
+.table * {
+  /* <.table *> means any descendents from the class "table" has the following styles*/
+  /* in this case, <*> means tr, th and td */
+  border: 1px solid black;
+  text-align: center;
+  width: 110px;
+  font-family: Sans-serif;
+}
+
+.table {
+  border-collapse: collapse;
+  /* border-collapse property sets whether table borders should collapse 
+  into a single border or be separated as in standard HTML.*/
+}
+
+#address {
+  width: 330px;
+}
+
+/* Q2_CSS */
+#input {
+  border-radius: 25px;
+  border: 2px solid lightgray;
+  width: 200px;
+  height: 20px;
+  font-size: medium;
+}
+
+/* Q4_CSS */
+option {
+  border-radius: 4px;
+  border: 2px solid #aaaaaa;
+  background-color: gray;
+}
+
+option::selection::before {
+  content: "↓";
+}
