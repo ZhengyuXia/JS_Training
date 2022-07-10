@@ -115,9 +115,9 @@ const second = [
   { uuid: 2, role: "associate" },
 ];
 
-// built-in func
+// Q3 built-in func
 const merge = (arg1, arg2) => {
-  let output = [...first, ...second];
+  let output = [...arg1, ...arg2];
 
   output.sort((a, b) => a.uuid - b.uuid);
 
