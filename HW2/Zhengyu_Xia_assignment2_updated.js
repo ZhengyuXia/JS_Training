@@ -33,8 +33,8 @@ doubleForLoopFunc(itemsObject);
 // Q1.2 "filter" built-in func
 const filterBuiltInFunc = (arg) => {
   return console.log(
-    arg.filter((cur) => {
-      return cur.quantity > 2 && cur.price > 300;
+    arg.filter((quantity, price) => {
+      return quantity > 2 && price > 300;
     })
   );
 };
@@ -80,13 +80,13 @@ sumForLoopFunc(itemsObject);
 
 // Q2
 const string =
-  " Perhaps The Easiest-to-understand   Case   For Reduce Is    To Return The Sum Of   All The Elements In  An Array ";
+  " Perhaps !!!The Easiest-to-understand   Case   For Reduce Is    To Return The Sum Of   All The Elements In  An Array ";
 
 const convertString = (arg) => {
   return console.log(
     string
-      .replace(/\s+/g, " ")
       .replace(/[^a-z]/gi, " ")
+      .replace(/\s+/g, " ")
       .trim()
       .toLowerCase()
   );
@@ -115,6 +115,26 @@ const second = [
   { uuid: 2, role: "associate" },
 ];
 
+// const new_map = {};
+// const mergedmap = [...first, ...second];
+// mergedmap.forEach((ele) => {
+//   if (!new_map[ele.uuid]) {
+//     new_map[ele.uuid] = {
+//       uuid: ele.uuid,
+//       name: !ele.name ? null : ele.name,
+//       role: !ele.role ? null : ele.role,
+//     };
+//   } else {
+//     new_map[ele.uuid] = { ...new_map[ele.uuid], ...ele };
+//   }
+// });
+
+// const sortedMap = Object.values(new_map).sort((a, b) => {
+//   a.uuid - b.uuid;
+// });
+
+// console.log(sortedMap);
+
 // Q3 built-in func
 const merge = (arg1, arg2) => {
   let output = [...arg1, ...arg2];
@@ -123,85 +143,16 @@ const merge = (arg1, arg2) => {
 
   output.forEach((cur, ind) => {
     if (ind < output.length - 1) {
-      cur.uuid === output[ind + 1].uuid
-        ? (Object.assign(cur, output[ind + 1]), output.splice(ind + 1, 1))
+      output[ind].uuid === output[ind + 1].uuid
+        ? ((output[ind] = { ...output[ind], ...output[ind + 1] }),
+          output.splice(ind + 1, 1))
         : null;
     }
-    cur.hasOwnProperty("role") ? null : (cur.role = "null");
-    cur.hasOwnProperty("name") ? null : (cur.name = "null");
+    output[ind].role ? null : (output[ind].role = null);
+    output[ind].name ? null : (output[ind].name = null);
   });
 
   return console.log(output);
 };
 
 merge(first, second);
-
-// cur.role === undefined ? (cur.role = "null") : null;
-// cur.name === undefined ? (cur.name = "null") : null;
-
-// const fourth = third.filter((cur, ind) => {
-//   if (ind < third.length - 1) cur.uuid !== 2;
-// });
-
-// const fourth = third.filter((cur, pos) => cur.uuid.indexOf() == pos);
-
-// third.forEach((cur) => {
-//   cur.hasOwnProperty("role") ? null : (cur.role = "null");
-//   cur.hasOwnProperty("name") ? null : (cur.name = "null");
-// });
-
-// console.log(third);
-
-// console.log(Object.assign({}, first, second));
-
-// console.log(
-//   (newFirst = first.map(({ uuid, name }) => ({
-//     uuid: uuid,
-//     name: name,
-//     role: null,
-//   })))
-// );
-
-// console.log(
-//   (newSecond = second.map(({ uuid, role }) => ({
-//     uuid: uuid,
-//     name: null,
-//     role: role,
-//   })))
-// );
-
-// const mergedArr = first.map((list1) => ({
-//   ...list1,
-//   ...second.find((list2) => list2.uuid === list1.uuid),
-// }));
-
-// console.log(mergedArr);
-
-// array3 = first.concat(second);
-
-// console.log(array3);
-
-// const mergedArr = first.map((item, i) => Object.assign({}, item, second[i]));
-
-// console.log(mergedArr);
-
-// console.log(Object.assign({},name,role))
-
-// Alan Tang
-// const map = {};
-// const mergedArray = [...first, ...second];
-// mergedArray.forEach((ele) => {
-//   if (!map[ele.uuid]) {
-//     map[ele.uuid] = {
-//       uuid: ele.uuid,
-//       name: !ele.name ? null : ele.name,
-//       role: !ele.role ? null : ele.role
-//     };
-//   } else {
-//     map[ele.uuid] = { ...map[ele.uuid], ...ele };
-//   }
-// });
-
-// const sortedArray = Object.values(map).sort((left, right) => {
-//   return left.uuid - right.uuid;
-// });
