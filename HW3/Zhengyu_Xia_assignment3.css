@@ -1,0 +1,24 @@
+/* Q1_CSS */
+.table * {
+  /* <.table *> means any descendents from the class "table" has the following styles*/
+  /* in this case, <*> means tr, th and td */
+  border: 1px solid black;
+  text-align: center;
+  width: 110px;
+  font-family: Sans-serif;
+}
+
+.table {
+  border-collapse: collapse;
+  /* border-collapse property sets whether table borders should collapse 
+  into a single border or be separated as in standard HTML.*/
+}
+
+#address {
+  width: 330px;
+}
+
+/* Q3_CSS */
+.option {
+  background-color: gray;
+}
