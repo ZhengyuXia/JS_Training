@@ -29,19 +29,47 @@ const tableInfo = {
   ],
 };
 
-// Q1 - Answer
+// Q1 - Method 1: bulti-in map
 let tableDiv = document.createElement("div");
 document.body.append(tableDiv);
-let tableH2 = document.createElement("h2");
-tableH2.textContent = "Q1.TABLE";
-tableDiv.append(tableH2);
-let table = document.createElement("table");
-table.className = "table";
-tableDiv.append(table);
+let tableHeader1 = document.createElement("h2");
+tableHeader1.textContent = "Q1.TABLE BY MAP";
+tableDiv.append(tableHeader1);
+let table1 = document.createElement("table");
+table1.className = "table";
+tableDiv.append(table1);
 
+const tableRow = document.createElement("tr");
+table1.append(tableRow);
+tableInfo.tableHeader.map((val0) => {
+  const ele = document.createElement("th");
+  ele.textContent = val0;
+  tableRow.append(ele);
+});
+
+tableInfo.tableContent.map((val1) => {
+  const tableRow = document.createElement("tr");
+  table1.append(tableRow);
+  Object.values(val1).map((val2, index) => {
+    const ele = document.createElement("td");
+    if (index === 3) {
+      ele.id = "address";
+    }
+    ele.textContent = val2;
+    tableRow.append(ele);
+  });
+});
+
+// Q1 - Method 2: for loop
+let tableHeader2 = document.createElement("h2");
+tableHeader2.textContent = "Q1.TABLE BY FOR-LOOP";
+tableDiv.append(tableHeader2);
+let table2 = document.createElement("table");
+table2.className = "table";
+tableDiv.append(table2);
 for (let i = 0; i <= tableInfo.tableContent.length; i++) {
   let tableRow = document.createElement("tr");
-  table.append(tableRow);
+  table2.append(tableRow);
   if (i === 0) {
     for (let j = 0; j < tableInfo.tableHeader.length; j++) {
       let tableHeader = document.createElement("th");
